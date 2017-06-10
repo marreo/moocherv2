@@ -4,6 +4,8 @@ block content
     span {{message}}
         div(v-for="activity of activities")
             p Last Update: {{ activity.lastUpdate }}
-            p Turn: {{ activity.turn.profile.name }}
+            div
+                p Turn: {{ activity.turn.profile.name }}
+                    //- img(v-bind:src="activity.turn.profile.picture")
             input(type='hidden', name='_csrf', value=_csrf)
             button(@click="updatePost(activity)").btn.btn-success Change Turn

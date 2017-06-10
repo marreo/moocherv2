@@ -20,6 +20,9 @@ const activitySchema = new mongoose.Schema({
         type: Number,
         default: 1
     },
+    symbol: {
+        type: Number
+    },
     metadata: {}
 });
 

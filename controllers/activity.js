@@ -49,7 +49,7 @@ exports.createActivity = (req, res) => {
     activity.lastUpdate = Date.now();
     activity.desc = 'TODO Fix Description';
     activity.turn = req.user.id;
-
+    activity.symbol = 1;
     return activity.save()
         .then((doc) => {
             var jDoc = JSON.stringify(doc);

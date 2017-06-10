@@ -1,5 +1,7 @@
 extends layout
 
 block content
-    p {{title}}
     span {{message}}
+        div(v-for="activity of activities", :key="activity._id")
+            div {{activity._id}}
+            div {{activity.status}}

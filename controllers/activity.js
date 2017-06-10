@@ -3,18 +3,21 @@ const ControllerBase = require('./base')
 
 exports.index = (req, res) => {
     res.render('activities', {
-        title: 'Activity'
+        title: 'Activity',
+        bajskorv: 'brun'
     });
 };
 
 exports.getActivity = (req, res) => {
-    return Activity.findOne({ users: req.user.id })
+    return Activity.find({ users: req.user.id })
         .then((doc) => {
-            var jDoc = JSON.stringify(doc);
-            res.render('activities', {
-                title: 'Activity',
-                activity: jDoc
-            });
+            var activities = [];
+
+            for (var act of doc) {
+                activities.push(act);
+            }
+
+            res.json(activities);
         });
 };
 

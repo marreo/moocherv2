@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const activitySchema = new mongoose.Schema({
     users: [{
-        type: Number,
+        type: String,
         required: "Please fill a User ID",
         ref: "User"
     }],
     turn: {
-        type: Number,
+        type: String,
         ref: "User"
     },
     desc: {

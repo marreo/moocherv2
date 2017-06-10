@@ -1,16 +1,22 @@
 const Activity = require('../models/Activity');
+const ControllerBase = require('./base')
 
 exports.getActivity = (req, res) => {
+    return Activity.findOne({ users: req.user.id })
+        .then((doc) => {
+            var jDoc = JSON.stringify(doc);
+            res.render('activities', {
+                activity: jDoc
+            });
+        });
+};
+
+exports.createActivity = (req, res) => {
     let activity = new Activity({});
+    activity.users.push(req.user.id);
     return activity.save()
         .then((doc) => {
-            return this.toJSON(doc);
+            var jDoc = JSON.stringify(doc);
+            res.end(jDoc);
         });
-    // .then((json) => {
-    //     return this.populateModels(json);
-    // })
-    // .then((json) => {
-    //     this.notifyModelChanges(ctx, "created", json);
-    //     return json;
-    // });
 };

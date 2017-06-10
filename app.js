@@ -114,6 +114,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
  * Primary app routes.
  */
 app.get('/', homeController.index);
+app.get('/activity', activityController.index);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
@@ -134,7 +135,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 /**
  * API examples routes.
  */
-app.get('/api', apiController.getApi);
+app.get('/api', passportConfig.isAuthenticated, apiController.getApi);
 app.get('/api/lastfm', apiController.getLastfm);
 app.get('/api/nyt', apiController.getNewYorkTimes);
 app.get('/api/aviary', apiController.getAviary);
@@ -166,7 +167,7 @@ app.get('/api/google-maps', apiController.getGoogleMaps);
 
 // Activities
 app.get('/api/activities/get', activityController.getActivity);
-app.get('/api/activities/create', activityController.createActivity);
+app.get('/api/activities/create', passportConfig.isAuthenticated, activityController.createActivity);
 
 /**
  * OAuth authentication routes. (Sign in)

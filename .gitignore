@@ -8,6 +8,10 @@ lib-cov
 *.gz
 *.swp
 
+*.env
+.env
+*.env*
+
 pids
 logs
 results

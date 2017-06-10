@@ -6,12 +6,22 @@ var app = new Vue({
         this.fetchData()
     },
     el: '#app',
-    data: { message: 'Hello Vue!', activities: '' },
+    data: { message: 'Hello Vue!', activities: [] },
     methods: {
         fetchData() {
             this.$http.get('/api/activities/get').then(response => {
-                this.activities.concat(response.body);
+                this.$set(this, 'activities', response.body);
             });
-        }
+        },
+        updatePost: function(data) {
+            data._csrf = $('meta[name="csrf-token"]').attr('content');
+            this.$http.post('/api/activities/changeturn', data)
+                .then(function() {
+                        this.fetchData();
+                    }
+                    .bind(this),
+                    function() {});
+
+        },
     }
 })

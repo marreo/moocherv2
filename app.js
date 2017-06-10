@@ -166,8 +166,9 @@ app.post('/api/pinterest', passportConfig.isAuthenticated, passportConfig.isAuth
 app.get('/api/google-maps', apiController.getGoogleMaps);
 
 // Activities
-app.get('/api/activities/get', activityController.getActivity);
+app.get('/api/activities/get', passportConfig.isAuthenticated, activityController.getActivity);
 app.get('/api/activities/create', passportConfig.isAuthenticated, activityController.createActivity);
+app.post('/api/activities/changeturn', passportConfig.isAuthenticated, activityController.changeTurn);
 
 /**
  * OAuth authentication routes. (Sign in)

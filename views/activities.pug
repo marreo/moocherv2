@@ -2,6 +2,8 @@ extends layout
 
 block content
     span {{message}}
-        div(v-for="activity of activities", :key="activity._id")
-            div {{activity._id}}
-            div {{activity.status}}
+        div(v-for="activity of activities")
+            p Last Update: {{ activity.lastUpdate }}
+            p Turn: {{ activity.turn.profile.name }}
+            input(type='hidden', name='_csrf', value=_csrf)
+            button(@click="updatePost(activity)").btn.btn-success Change Turn

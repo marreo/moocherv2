@@ -12,6 +12,7 @@ exports.getActivity = (req, res) => {
         .then((doc) => {
             var jDoc = JSON.stringify(doc);
             res.render('activities', {
+                title: 'Activity',
                 activity: jDoc
             });
         });

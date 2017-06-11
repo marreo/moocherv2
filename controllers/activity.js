@@ -8,19 +8,28 @@ exports.index = (req, res) => {
     });
 };
 
+// async function populateModel(doc) {
+//     console.log('populating??' + doc);
+//     var activities = [];
+//     for (var act of doc) {
+//         console.log('bajsjdj' + act);
+//         User.findOne({ _id: act.turn }, function(err, usr) {
+//             console.log('found user?');
+//             act.turn = usr;
+//             activities.push(act);
+//         });
+//     }
+//     console.log('populateModel:' + activities);
+//     return activities;
+// };
+
 exports.getActivity = (req, res) => {
     return Activity.find({ users: req.user.id })
         .then((doc) => {
-            var activities = [];
-
-            for (var act of doc) {
-                User.findOne({ _id: act.turn }, function(err, usr) {
-                    console.log('Found user: ' + usr);
-                    act.turn = usr;
-                    activities.push(act);
-                    res.json(activities);
-                });
-            }
+            // console.log('Found activity?');
+            // var activities = await populateModel(doc);
+            // console.log('asdsa' + activities);
+            res.json(doc);
         });
 };
 
@@ -43,16 +52,20 @@ exports.changeTurn = (req, res) => {
 };
 
 exports.createActivity = (req, res) => {
-    let activity = new Activity({});
-    activity.users.push(req.user.id);
-    activity.users.push('593bedbbc3408e0224001d37');
-    activity.lastUpdate = Date.now();
-    activity.desc = 'TODO Fix Description';
-    activity.turn = req.user.id;
-    activity.symbol = 1;
-    return activity.save()
-        .then((doc) => {
-            var jDoc = JSON.stringify(doc);
-            res.end(jDoc);
+    console.log('Hello: ' + req.body.email + ' | ' + req.body.desc);
+    User.findOne({ email: req.body.email })
+        .then((user) => {
+            let activity = new Activity({});
+            activity.users.push(req.user.id);
+            activity.users.push(user.id);
+            activity.lastUpdate = Date.now();
+            activity.desc = req.body.desc;
+            activity.turn = req.user.id;
+            activity.symbol = 1;
+            return activity.save()
+                .then((doc) => {
+                    var jDoc = JSON.stringify(doc);
+                    res.end(jDoc);
+                });
         });
 };

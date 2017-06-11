@@ -167,8 +167,11 @@ app.get('/api/google-maps', apiController.getGoogleMaps);
 
 // Activities
 app.get('/api/activities/get', passportConfig.isAuthenticated, activityController.getActivity);
-app.get('/api/activities/create', passportConfig.isAuthenticated, activityController.createActivity);
+app.post('/api/activities/create', passportConfig.isAuthenticated, activityController.createActivity);
 app.post('/api/activities/changeturn', passportConfig.isAuthenticated, activityController.changeTurn);
+
+//Find
+app.post('/api/user/find', passportConfig.isAuthenticated, userController.find);
 
 /**
  * OAuth authentication routes. (Sign in)

@@ -1,11 +1,17 @@
 extends layout
 
 block content
-    span {{message}}
-        div(v-for="activity of activities")
-            p Last Update: {{ activity.lastUpdate }}
-            div
-                p Turn: {{ activity.turn.profile.name }}
-                    //- img(v-bind:src="activity.turn.profile.picture")
+    form(method="POST", action="/", v-on:submit.prevent="findUser")
+        div(v-bind:class='[emailSearchStatusGroup]').form-group
+            p {{searchEmail}}
+            input(type="email", placeholder="Enter an email", name="email", v-model='searchEmail', v-bind:class='[emailSearchStatus]').form-control
+    form(method="POST", action="/", v-on:submit.prevent="newActivity")
+        div(v-bind:class='[showDescForm]').form-group
+            p {{searchEmail}}
+            input(type="text", placeholder="Enter a description", name="desc", v-model='actDesc').form-control
+    div(v-for="activity of activities")
+        p Last Update: {{ activity.lastUpdate }}
+        div
+            //- p Turn: {{ activity.turn.profile.name }}
             input(type='hidden', name='_csrf', value=_csrf)
             button(@click="updatePost(activity)").btn.btn-success Change Turn

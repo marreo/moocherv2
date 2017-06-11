@@ -10,6 +10,8 @@ block content
             p {{searchEmail}}
             input(type="text", placeholder="Enter a description", name="desc", v-model='actDesc').form-control
     div(v-for="activity of activities")
+        p {{ activity.desc }}
+        p(v-if="activity.turn.profile !== undefined") {{ activity.turn.profile.name }}
         p Last Update: {{ activity.lastUpdate }}
         div
             //- p Turn: {{ activity.turn.profile.name }}

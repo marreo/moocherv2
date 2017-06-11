@@ -50,6 +50,9 @@ var app = new Vue({
                     _csrf: $('meta[name="csrf-token"]').attr('content')
                 })
                 .then(function(response) {
+                        this.actDesc = '';
+                        this.searchEmail = '';
+                        this.showDescForm = 'hidden';
                         this.fetchData();
                     }.bind(this),
                     function() {});

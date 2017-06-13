@@ -31,7 +31,6 @@ dotenv.load({ path: '.env' });
  */
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
-const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const activityController = require('./controllers/activity');
 
@@ -130,11 +129,6 @@ app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
-
-/**
- * API examples routes.
- */
-app.get('/api', passportConfig.isAuthenticated, apiController.getApi);
 
 // Activities
 app.get('/api/activities/get', passportConfig.isAuthenticated, activityController.getActivity);

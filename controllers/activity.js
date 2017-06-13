@@ -1,6 +1,5 @@
 const Activity = require('../models/Activity');
 const User = require('../models/User');
-const ControllerBase = require('./base')
 
 exports.index = (req, res) => {
     res.render('activities', {

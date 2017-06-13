@@ -57,5 +57,14 @@ var app = new Vue({
                     }.bind(this),
                     function() {});
         }
+    },
+    computed: {
+        getSymbol: function() {
+            if(this.symbolId === 1){
+                return "fa fa-car fa-6";
+            }
+
+            return "fa fa-car fa-6";
+        }
     }
 })

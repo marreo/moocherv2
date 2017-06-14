@@ -97,12 +97,11 @@ app.use((req, res, next) => {
     // After successful login, redirect back to the intended page
     if (!req.user &&
         req.path !== '/login' &&
-        req.path !== '/signup' &&
         !req.path.match(/^\/auth/) &&
         !req.path.match(/\./)) {
         req.session.returnTo = req.path;
     } else if (req.user &&
-        req.path == '/account') {
+        req.path == '/') {
         req.session.returnTo = req.path;
     }
     next();
@@ -115,14 +114,11 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 app.get('/', homeController.index);
 app.get('/activity', activityController.index);
 app.get('/login', userController.getLogin);
-app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
 app.get('/forgot', userController.getForgot);
 app.post('/forgot', userController.postForgot);
 app.get('/reset/:token', userController.getReset);
 app.post('/reset/:token', userController.postReset);
-app.get('/signup', userController.getSignup);
-app.post('/signup', userController.postSignup);
 app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);

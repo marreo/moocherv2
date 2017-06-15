@@ -1,20 +1,11 @@
-@import "lib/bootstrap/bootstrap";
-@import "themes/default/variables";
-@import "lib/font-awesome/font-awesome";
-@import "themes/default/default";
-// Scaffolding
-// -------------------------
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
 html {
     position: relative;
     min-height: 100%;
 }
 
-.hej {
-    background: pink;
-}
-
 body {
-    padding-top: 60px;
     margin-bottom: 75px;
 }
 
@@ -36,14 +27,6 @@ textarea {
     resize: vertical;
 }
 
-// Navbar
-// -------------------------
-.navbar-nav img {
-    width: 30px;
-    height: 30px;
-    margin: -15px 15px -15px;
-}
-
 // Alerts
 // -------------------------
 .alert {
@@ -62,6 +45,10 @@ textarea {
 // -------------------------
 .fa {
     margin-right: 6px;
+}
+
+.navbar-brand img{
+    width: 150px;
 }
 
 .activity{

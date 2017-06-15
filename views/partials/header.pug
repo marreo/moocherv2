@@ -1,27 +1,19 @@
-.navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand(href='/')
-        i.fa.fa-cube
-        | Project name
-    .collapse.navbar-collapse
-      if user
-        ul.nav.navbar-nav
-          li(class=(title == 'Home') ? 'active' : undefined)
-              a(href='/') Home
-          li
-            a(href='/activity') Activites
-      ul.nav.navbar-nav.navbar-right
+.nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+  a.navbar-brand
+    img(src="/Moocher-logo.png")
+  div.collapse.navbar-collapse#navbarNav
+    if user
+      ul.navbar-nav
+        li(class=(title == 'Home') ? 'active' : undefined).nav-link
+          a(href='/') Home
+        li.nav-link
+          a(href='/activity') Activites
+      ul.navbar-nav.ml-auto
         if !user
-          li(class=(title == 'Login') ? 'active' : undefined)
+          li.nav-link
             a(href='/login') Login
         else
-          li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
+          li.dropdown
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               if user.profile.picture
                 img(src=user.profile.picture)

@@ -58,15 +58,20 @@ var app = new Vue({
                     this.fetchData();
                 }.bind(this),
                 function () { });
-        }
-    },
-    computed: {
-        getSymbol: function () {
-            if (this.symbolId === 1) {
+        },
+        getSymbol: function(activity) {
+            if(activity.symbolId === 1){
                 return "fa fa-car fa-6";
             }
 
             return "fa fa-car fa-6";
+        },
+        getProfileImage: function(activity) {
+            if (activity.turn.profile !== "undefined")
+                return activity.turn.profile.picture;
+            else
+            // Twitter only, if FB then other implementation is needed.
+                return "";
         }
     }
 })

@@ -5,6 +5,7 @@ block content
         div(v-bind:class='[emailSearchStatusGroup]').form-group
             p {{searchEmail}}
             input(type="email", placeholder="Enter an email", name="email", v-model='searchEmail', v-bind:class='[emailSearchStatus]').form-control
+            p {{errorMessage}}
     form(method="POST", action="/", v-on:submit.prevent="newActivity")
         div(v-bind:class='[showDescForm]').form-group
             p {{searchEmail}}
@@ -20,3 +21,4 @@ block content
                 //- p Turn: {{ activity.turn.profile.name }}
                 input(type='hidden', name='_csrf', value=_csrf)
                 button(@click="updatePost(activity)").btn.btn-success Change Turn
+                

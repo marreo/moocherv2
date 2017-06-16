@@ -1,4 +1,5 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import './lib/font-awesome/font-awesome.scss';
 
 html {
     position: relative;
@@ -108,4 +109,15 @@ textarea {
         -webkit-filter: blur(10px);
 
     }
+}
+
+.m-fadeOut {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+.m-fadeIn {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
 }

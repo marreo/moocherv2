@@ -6,7 +6,7 @@ var app = new Vue({
         this.fetchData()
     },
     el: '#app',
-    data: { message: 'Hello Vue!', activities: [], searchEmail: '', emailSearchStatus: '', emailSearchStatusGroup: '', actDesc: '', showDescForm: 'hidden', errorMessage: '' },
+    data: { message: 'Hello Vue!', activities: [], searchEmail: '', emailSearchStatus: '', emailSearchStatusGroup: '', actDesc: '', showDescForm: 'm-fadeOut', errorMessage: '' },
     methods: {
         fetchData() {
             this.$http.get('/api/activities/get').then(response => {
@@ -33,7 +33,7 @@ var app = new Vue({
                 if (userSearchStatus == 'true') {
                     this.emailSearchStatus = 'form-control-success';
                     this.emailSearchStatusGroup = 'has-success';
-                    this.showDescForm = '';
+                    this.showDescForm = 'm-fadeIn';
                 } else {
                     this.emailSearchStatus = 'form-control-error';
                     this.emailSearchStatusGroup = 'has-error';
@@ -54,7 +54,7 @@ var app = new Vue({
                 .then(function (response) {
                     this.actDesc = '';
                     this.searchEmail = '';
-                    this.showDescForm = 'hidden';
+                    this.showDescForm = 'm-fadeOut';
                     this.fetchData();
                 }.bind(this),
                 function () { });

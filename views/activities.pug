@@ -2,13 +2,11 @@ block content
     div#app
         form(method="POST", action="/", v-on:submit.prevent="findUser")
             div(v-bind:class='[emailSearchStatusGroup]').form-group
-                p {{searchEmail}}
-                input(type="email", placeholder="Enter an email", name="email", v-model='searchEmail', v-bind:class='[emailSearchStatus]').form-control
-                p {{errorMessage}}
+                input(type="email", placeholder="Enter an email", name="email", v-model='searchEmail', v-bind:class='[emailSearchStatus]', autocomplete="off").form-control
+                p.form-control-feedback {{errorMessage}}
         form(method="POST", action="/", v-on:submit.prevent="newActivity")
             div(v-bind:class='[showDescForm]').form-group
-                p {{searchEmail}}
-                input(type="text", placeholder="Enter a description", name="desc", v-model='actDesc').form-control
+                input(type="text", placeholder="Enter a description", name="desc", v-model='actDesc', autocomplete="off").form-control
         div(v-for="activity of activities" class="activity")
             div(class="wrapper-center")
                 i(v-bind:class="getSymbol(activity)") 

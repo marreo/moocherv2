@@ -35,12 +35,15 @@ var app = new Vue({
                     this.emailSearchStatusGroup = 'has-success';
                     this.showDescForm = 'm-fadeIn';
                 } else {
-                    this.emailSearchStatus = 'form-control-error';
-                    this.emailSearchStatusGroup = 'has-error';
+                    this.emailSearchStatus = 'form-control-danger';
+                    this.emailSearchStatusGroup = 'has-danger';
+                    this.showDescForm = 'm-fadeOut';
                     this.errorMessage = "Couldn't find that Moocher, want to send an invite?";
                 }
             }, response => {
-                console.log('error? ' + response);
+                this.emailSearchStatus = 'form-control-danger';
+                this.showDescForm = 'm-fadeOut';
+                this.emailSearchStatusGroup = 'has-danger';
                 this.errorMessage = response.body.replace('"', '');
             }).bind(this),
                 function () { };

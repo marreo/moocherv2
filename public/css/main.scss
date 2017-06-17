@@ -65,7 +65,7 @@ textarea {
     overflow: hidden;
 
     &.active {
-        height: 220px;
+        height: 320px;
 
         .wrapper-inner {
             opacity: 1;
@@ -124,4 +124,13 @@ textarea {
 
 .account-dropdown {
     width: 100%;
+}
+
+.activity-close {
+    display: none;
+    position: absolute;
+}
+
+.active .activity-close {
+    display: block;
 }

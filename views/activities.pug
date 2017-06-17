@@ -8,6 +8,8 @@ block content
             div(v-bind:class='[showDescForm]').form-group
                 input(type="text", placeholder="Enter a description", name="desc", v-model='actDesc', autocomplete="off").form-control
         div(v-for="activity of activities" class="activity")
+            div.activity-close
+                i.fa.fa-times
             div(class="wrapper-center")
                 i(v-bind:class="getSymbol(activity)") 
                 div {{ activity.desc }}

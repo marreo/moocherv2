@@ -3,11 +3,6 @@
     img(src="/Moocher-logo.png")
   div.collapse.navbar-collapse#navbarNav
     if user
-      ul.navbar-nav
-        li(class=(title == 'Home') ? 'active' : undefined).nav-link
-          a(href='/') Home
-        li.nav-link
-          a(href='/activity') Activites
       ul.navbar-nav.ml-auto      
         li.dropdown
           a.dropdown-toggle(href='#', data-toggle='dropdown')
@@ -15,9 +10,9 @@
               img(src=user.profile.picture)
             span= user.profile.name || user.email || user.id
             i.caret
-          ul.dropdown-menu
-            li
+          ul.dropdown-menu.account-dropdown
+            li.dropdown-item
               a(href='/account') My Account
             li.divider
-            li
+            li.dropdown-item
               a(href='/logout') Logout

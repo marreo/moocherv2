@@ -16,9 +16,8 @@ block content
             div(class="wrapper-inner")
                 div
                     img(v-bind:src="getProfileImage(activity)")
-                    p(v-if="activity.turn.profile !== undefined") {{ activity.turn.profile.name }}
+                    p(v-if="activity.turn.profile !== undefined") It's {{ activity.turn.profile.name }} turn
                     p Last Update: {{ activity.lastUpdate }}
                 div
-                    //- p Turn: {{ activity.turn.profile.name }}
                     input(type='hidden', name='_csrf', value=_csrf)
                     button(@click="updatePost(activity)").btn.btn-success Change Turn

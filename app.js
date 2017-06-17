@@ -31,7 +31,6 @@ dotenv.load({ path: '.env' });
  */
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
-const contactController = require('./controllers/contact');
 const activityController = require('./controllers/activity');
 
 /**

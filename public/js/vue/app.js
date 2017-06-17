@@ -41,7 +41,7 @@ var app = new Vue({
                 }
             }, response => {
                 console.log('error? ' + response);
-                    this.errorMessage = response.body.replace('"', '');
+                this.errorMessage = response.body.replace('"', '');
             }).bind(this),
                 function () { };
         },
@@ -59,18 +59,18 @@ var app = new Vue({
                 }.bind(this),
                 function () { });
         },
-        getSymbol: function(activity) {
-            if(activity.symbolId === 1){
+        getSymbol: function (activity) {
+            if (activity.symbolId === 1) {
                 return "fa fa-car fa-6";
             }
 
             return "fa fa-car fa-6";
         },
-        getProfileImage: function(activity) {
+        getProfileImage: function (activity) {
             if (activity.turn.profile !== "undefined")
                 return activity.turn.profile.picture;
             else
-            // Twitter only, if FB then other implementation is needed.
+                // Twitter only, if FB then other implementation is needed.
                 return "";
         }
     }

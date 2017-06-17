@@ -17,18 +17,14 @@ exports.getActivity = (req, res) => {
 };
 
 exports.changeTurn = (req, res) => {
-    console.log('Maybe..');
     Activity.findOne({ _id: req.body._id }, function(err, act) {
         var nextId = act.users.filter(function(id) {
-            console.log('Yes..');
             return id != act.turn;
         });
-        console.log('Next turn: ' + nextId);
         act.turn = nextId;
         act.lastUpdate = Date.now();
         return act.save()
             .then((doc) => {
-                console.log('Done..');
                 res.status(200).end();
             });
     });

@@ -1,27 +1,20 @@
 const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
+const mongooseHidden = require('mongoose-hidden')()
 
 const userSchema = new mongoose.Schema({
   email: { type: String, unique: true },
-  password: String,
-  passwordResetToken: String,
-  passwordResetExpires: Date,
+  password: {type: String, hide: true},
+  passwordResetToken: {type: String, hide: true},
+  passwordResetExpires: {type: Date, hide: true},
 
-  facebook: String,
-  twitter: String,
-  google: String,
-  github: String,
-  instagram: String,
-  linkedin: String,
-  steam: String,
-  tokens: Array,
+  facebook: {type: String, hide: true},
+  twitter: {type: String, hide: true},
+  tokens: {type: String, hide: true},
 
   profile: {
     name: String,
-    gender: String,
-    location: String,
-    website: String,
     picture: String
   }
 }, { timestamps: true });

@@ -1,12 +1,12 @@
 {
-  "name": "hackathon-starter",
-  "version": "4.3.0",
-  "description": "A boilerplate for Node.js web applications",
+  "name": "moocher",
+  "version": "1.0.0",
+  "description": "A new way to Mooch with your friends",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://github.com/marreo/moocherv2.git"
   },
-  "author": "Sahat Yalkabov",
+  "author": "Martin Lindgren",
   "license": "MIT",
   "scripts": {
     "start": "nodemon app.js",
@@ -41,6 +41,7 @@
     "lob": "^3.9.0",
     "lusca": "^1.4.1",
     "mongoose": "^4.6.6",
+    "mongoose-hidden": "^1.4.0",
     "morgan": "^1.7.0",
     "multer": "^1.2.0",
     "nodemailer": "^3.1.7",

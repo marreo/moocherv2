@@ -34,9 +34,9 @@ var app = new Vue({
         ]
     },
     created() {
-        // this.$http.get('/api/user/get').then(response => {
-        //     theme = this.updateTheme(response.profile.theme);
-        // });
+        this.$http.get('/api/user/get').then(response => {
+            this.theme = this.updateTheme(response.body.profile.theme);
+        });
     },
     methods: {
         fetchData() {
@@ -45,12 +45,16 @@ var app = new Vue({
             });
         },
         updateTheme: function (theme) {
-            console.log('Goodbye?');
-            return "theme-bajs";
-            // switch(user.profile.theme) {
-            //     default:
-            //         theme = 'theme-light';
-            // }
+            switch(theme) {
+                case 1:
+                    return 'theme-light';
+                case 2:
+                    return 'theme-dark';
+                case 3:
+                    return 'theme-color';
+                default:
+                    return 'theme-light';
+            }
         },
         updatePost: function (data) {
             data._csrf = $('meta[name="csrf-token"]').attr('content');

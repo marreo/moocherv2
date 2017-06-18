@@ -2,8 +2,11 @@ var app = new Vue({
     mounted: function (argument) {
         console.log("app is ready");
     },
-    created() {
-        this.fetchData()
+    created() {        
+        this.fetchData();        
+        this.$http.get('/api/user/get').then(response => {
+            this.theme = this.updateTheme(response.body.profile.theme);
+        });
     },
     el: '#app',
     data: {
@@ -32,11 +35,6 @@ var app = new Vue({
             { text: 'Train', value: '/svg/train.svg' },
             { text: 'Travel', value: '/svg/luggage.svg' }
         ]
-    },
-    created() {
-        this.$http.get('/api/user/get').then(response => {
-            this.theme = this.updateTheme(response.body.profile.theme);
-        });
     },
     methods: {
         fetchData() {

@@ -276,3 +276,7 @@ exports.find = (req, res, next) => {
 exports.get = (req, res, next) => {
     res.json(req.user);
 };
+
+exports.changeTheme = (req, res, next) => {
+    
+};

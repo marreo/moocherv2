@@ -1,5 +1,5 @@
 block content
-    div#app
+    div
         form(method="POST", action="/", v-on:submit.prevent="findUser")
             div(v-bind:class='[emailSearchStatusGroup]').form-group
                 input(type="email", placeholder="Enter an email", name="email", v-model='searchEmail', v-bind:class='[emailSearchStatus]', autocomplete="off").form-control

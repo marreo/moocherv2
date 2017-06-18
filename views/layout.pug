@@ -13,7 +13,7 @@ html
   body
     include partials/header
 
-    .container
+    .container#app(v-bind:class='theme')
       include partials/flash
       block content
 

@@ -16,6 +16,7 @@ var app = new Vue({
         showDescForm: 'm-fadeOut', 
         errorMessage: '',
         symbolPath: '',
+        theme: 'theme-dark',
         options: [ 
             { text: 'Hamburger', value: '/svg/hamburger.svg'},
             { text: 'Beer', value: '/svg/pint.svg'},

@@ -5988,6 +5988,12 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   .hidden-print {
     display: none !important; } }
 
+.theme-light .activity {
+  color: #434a54; }
+
+.theme-light .activity {
+  color: #fff; }
+
 /*!
  *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -8215,7 +8221,6 @@ textarea {
 
 .activity {
   padding: 18px 10px;
-  color: #fff;
   position: relative;
   height: 100px;
   transition: all 0.5s cubic-bezier(0.59, 0, 0, 1.01);

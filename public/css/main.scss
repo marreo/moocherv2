@@ -1,4 +1,6 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import './modules/theme-dark.scss';
+@import './modules/theme-light.scss';
 @import './lib/font-awesome/font-awesome.scss';
 
 $color1 : #1ABC9C;
@@ -65,7 +67,6 @@ textarea {
 
 .activity{
     padding: 18px 10px;
-    color: #fff;
     position: relative;
     height: 100px;
 

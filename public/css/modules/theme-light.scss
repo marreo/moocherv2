@@ -1,10 +1,18 @@
 .theme-light {
     .activity {
-        color: #fff;
+        color: #434a54;
+
+    &:nth-child(odd){
+        background-color: #F5F7FA;
+    }
+
+    &:nth-child(even){
+        background-color: #e6e9ed;
+    }
     }
 }
 
 
     // background-color: #F5F7FA;
-    //     background-color: #e6e9ed;
+    //     background-color: #;
     //     color: #434a54;

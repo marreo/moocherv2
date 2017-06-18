@@ -5988,11 +5988,15 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   .hidden-print {
     display: none !important; } }
 
-.theme-light .activity {
+.theme-dark .activity {
   color: #434a54; }
 
 .theme-light .activity {
-  color: #fff; }
+  color: #434a54; }
+  .theme-light .activity:nth-child(odd) {
+    background-color: #F5F7FA; }
+  .theme-light .activity:nth-child(even) {
+    background-color: #e6e9ed; }
 
 /*!
  *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome

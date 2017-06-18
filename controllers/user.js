@@ -46,6 +46,7 @@ exports.postUpdateProfile = (req, res, next) => {
         user.profile.gender = req.body.gender || '';
         user.profile.location = req.body.location || '';
         user.profile.website = req.body.website || '';
+        user.profile.theme = req.body.theme || '1';
         user.save((err) => {
             if (err) {
                 if (err.code === 11000) {
@@ -277,6 +278,12 @@ exports.get = (req, res, next) => {
     res.json(req.user);
 };
 
-exports.changeTheme = (req, res, next) => {
-    
+exports.changeTheme = (req, res, next) => {    
+    User.findOne({ _id: req.user.id }, function(err, user) {
+        user.profile.theme = req.body.theme;
+        return user.save()
+            .then((doc) => {
+                res.status(200).end();
+            });
+    });
 };

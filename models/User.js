@@ -5,17 +5,18 @@ const mongooseHidden = require('mongoose-hidden')()
 
 const userSchema = new mongoose.Schema({
   email: { type: String, unique: true },
-  password: {type: String, hide: true},
-  passwordResetToken: {type: String, hide: true},
-  passwordResetExpires: {type: Date, hide: true},
+  password: { type: String, hide: true },
+  passwordResetToken: { type: String, hide: true },
+  passwordResetExpires: { type: Date, hide: true },
 
-  facebook: {type: String, hide: true},
-  twitter: {type: String, hide: true},
-  tokens: {type: String, hide: true},
+  facebook: { type: String, hide: true },
+  twitter: { type: String, hide: true },
+  tokens: { type: Array, hide: true },
 
   profile: {
     name: String,
-    picture: String
+    picture: String,
+    theme: { type: Number, default: 1 },
   }
 }, { timestamps: true });
 

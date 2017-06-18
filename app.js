@@ -129,6 +129,7 @@ app.post('/api/activities/changeturn', passportConfig.isAuthenticated, activityC
 
 //Find
 app.post('/api/user/find', passportConfig.isAuthenticated, userController.find);
+app.get('/api/user/get', passportConfig.isAuthenticated, userController.get);
 
 /**
  * OAuth authentication routes. (Sign in)

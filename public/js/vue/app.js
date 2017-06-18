@@ -6,38 +6,51 @@ var app = new Vue({
         this.fetchData()
     },
     el: '#app',
-    data: { 
-        message: 'Hello Vue!', 
-        activities: [], 
-        searchEmail: '', 
-        emailSearchStatus: '', 
-        emailSearchStatusGroup: '', 
-        actDesc: '', 
-        showDescForm: 'm-fadeOut', 
+    data: {
+        message: 'Hello Vue!',
+        activities: [],
+        searchEmail: '',
+        emailSearchStatus: '',
+        emailSearchStatusGroup: '',
+        actDesc: '',
+        showDescForm: 'm-fadeOut',
         errorMessage: '',
         symbolPath: '',
         theme: 'theme-dark',
-        options: [ 
-            { text: 'Hamburger', value: '/svg/hamburger.svg'},
-            { text: 'Beer', value: '/svg/pint.svg'},
-            { text: 'Resturant', value: '/svg/restaurant.svg'},
-            { text: 'Taxi', value: '/svg/taxi.svg'},
-            { text: 'Movie', value: '/svg/clapperboard.svg'},
-            { text: 'Cocktail', value: '/svg/cocktail.svg'},
-            { text: 'Coffee', value: '/svg/coffee-cup.svg'},
-            { text: 'Steak', value: '/svg/food.svg'},
-            { text: 'Drink', value: '/svg/glass.svg'},
-            { text: 'Taco', value: '/svg/taco.svg'},
-            { text: 'Tickets', value: '/svg/tickets.svg'},
-            { text: 'Train', value: '/svg/train.svg'},
-            { text: 'Travel', value: '/svg/luggage.svg'}
-            ]
+        options: [
+            { text: 'Hamburger', value: '/svg/hamburger.svg' },
+            { text: 'Beer', value: '/svg/pint.svg' },
+            { text: 'Resturant', value: '/svg/restaurant.svg' },
+            { text: 'Taxi', value: '/svg/taxi.svg' },
+            { text: 'Movie', value: '/svg/clapperboard.svg' },
+            { text: 'Cocktail', value: '/svg/cocktail.svg' },
+            { text: 'Coffee', value: '/svg/coffee-cup.svg' },
+            { text: 'Steak', value: '/svg/food.svg' },
+            { text: 'Drink', value: '/svg/glass.svg' },
+            { text: 'Taco', value: '/svg/taco.svg' },
+            { text: 'Tickets', value: '/svg/tickets.svg' },
+            { text: 'Train', value: '/svg/train.svg' },
+            { text: 'Travel', value: '/svg/luggage.svg' }
+        ]
+    },
+    created() {
+        // this.$http.get('/api/user/get').then(response => {
+        //     theme = this.updateTheme(response.profile.theme);
+        // });
     },
     methods: {
         fetchData() {
             this.$http.get('/api/activities/get').then(response => {
                 this.$set(this, 'activities', response.body);
             });
+        },
+        updateTheme: function (theme) {
+            console.log('Goodbye?');
+            return "theme-bajs";
+            // switch(user.profile.theme) {
+            //     default:
+            //         theme = 'theme-light';
+            // }
         },
         updatePost: function (data) {
             data._csrf = $('meta[name="csrf-token"]').attr('content');

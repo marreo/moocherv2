@@ -9,11 +9,7 @@ $(document).ready(function() {
     }));
 
     $("#symbolPath").imagepicker({
-      initialized: function(imagePicker){
-        var test = this;
-      },
       changed: function(oldValues, newValues){
-        debugger;
         $select = $(this);
         $select.val(newValues).triggerNative("change");
       }

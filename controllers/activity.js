@@ -40,7 +40,7 @@ exports.createActivity = (req, res) => {
             activity.lastUpdate = Date.now();
             activity.desc = req.body.desc;
             activity.turn = req.user.id;
-            activity.symbol = 1;
+            activity.symbol = req.body.symbolPath || 1;
             return activity.save()
                 .then((doc) => {
                     var jDoc = JSON.stringify(doc);

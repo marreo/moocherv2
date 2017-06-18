@@ -21,7 +21,7 @@ const activitySchema = new mongoose.Schema({
         default: 1
     },
     symbol: {
-        type: Number
+        type: String
     },
     metadata: {}
 });

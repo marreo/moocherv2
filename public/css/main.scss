@@ -1,6 +1,17 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 @import './lib/font-awesome/font-awesome.scss';
 
+$color1 : #1ABC9C;
+$color2 : #2ECC71;
+$color3 : #3498DB;
+$color4 : #9B59B6;
+$color5 : #34495E;
+
+$penColor1: #b1db73;
+$penColor2: #f3bb72;
+$penColor3: #ef7899;
+$penColor4: #53d1d2;
+
 html {
     position: relative;
     min-height: 100%;
@@ -53,7 +64,7 @@ textarea {
 }
 
 .activity{
-    padding: 22px 10px;
+    padding: 18px 10px;
     color: #fff;
     position: relative;
     height: 100px;
@@ -75,12 +86,20 @@ textarea {
         }
     }
 
-    &:nth-child(odd){
-        background-color: #ef7899;
+    &:nth-child(4n+2){
+        background-color: $penColor1;
     }
 
-    &:nth-child(even){
-        background-color: #53d1d2;
+    &:nth-child(4n+3){
+        background-color: $penColor2;
+    }
+
+    &:nth-child(4n+0){
+        background-color: $penColor3;
+    }
+
+    &:nth-child(4n+1){
+        background-color: $penColor4;
     }
 
     i {
@@ -88,6 +107,11 @@ textarea {
             margin-right: 5px;
             font-size: 2em;
         }
+    }
+
+    .symbol{
+        height: 48px;
+        width: 48px;
     }
 
     .wrapper-center{
@@ -134,3 +158,38 @@ textarea {
 .active .activity-close {
     display: block;
 }
+
+///// Image-picker css /////
+ul.thumbnails.image_picker_selector {
+  overflow: auto;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px; }
+  ul.thumbnails.image_picker_selector ul {
+    overflow: auto;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px; }
+  ul.thumbnails.image_picker_selector li.group {width:100%;} 
+  ul.thumbnails.image_picker_selector li.group_title {
+    float: none; }
+  ul.thumbnails.image_picker_selector li {
+    margin: 0px 12px 12px 0px;
+    float: left; 
+    height: 64px;
+    width: 64px;}
+    ul.thumbnails.image_picker_selector li .thumbnail {
+      padding: 6px;
+      border: 1px solid #dddddd;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none; }
+      ul.thumbnails.image_picker_selector li .thumbnail img {
+        -webkit-user-drag: none; }
+    ul.thumbnails.image_picker_selector li .thumbnail.selected {
+      background: #53d1d2; 
+      color: #fff;}

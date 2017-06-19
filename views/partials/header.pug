@@ -1,4 +1,4 @@
-.nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+.nav.navbar.navbar-toggleable-md
   a.navbar-brand
     img(src="/Moocher-logo.png")
   div.collapse.navbar-collapse#navbarNav
@@ -7,7 +7,7 @@
         li.dropdown
           a.dropdown-toggle(href='#', data-toggle='dropdown')
             if user.profile.picture
-              img(src=user.profile.picture)
+              img(src=user.profile.picture).account--image-navbar
             span= user.profile.name || user.email || user.id
             i.caret
           ul.dropdown-menu.account-dropdown

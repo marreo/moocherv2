@@ -1,5 +1,48 @@
+$background: #34495E;
+
+$background-light1: lighten($background,5%);
+$background-light2: lighten($background,15%);
+
 .theme-dark {
+
+    color: #fff;
+
+    .navbar {        
+        background: $background-light1;
+
+        .dropdown {
+            a {
+                color: #fff;
+            }
+            & .dropdown-item:hover {
+                background: $background-light1;
+            }
+        }
+
+        .dropdown-menu {
+            background: $background;
+        }
+    }
+
+    background: $background;
+
+    input {
+        background-color: $background-light1;
+        color: #fff;
+
+        &:focus {
+            background: lighten($background,15%);
+            color: #fff;
+        }
+    }
+
     .activity {
         color: #434a54;
     }
 }
+
+
+
+    // background-color: #F5F7FA;
+    //     background-color: #;
+    //     color: #434a54;

@@ -23,6 +23,10 @@ body {
     margin-bottom: 75px;
 }
 
+.container-wrapper {
+    min-height: 100vh;
+}
+
 footer {
     position: absolute;
     bottom: 0;
@@ -61,8 +65,17 @@ textarea {
     margin-right: 6px;
 }
 
-.navbar-brand img{
+.navbar {
+    
+    .account--image-navbar {
+        padding-right: 15px;
+    }
+
+    margin-bottom: 10px;
+
+    &-brand img{
     width: 150px;
+}
 }
 
 .activity{
@@ -137,14 +150,15 @@ textarea {
 }
 
 .m-fadeOut {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s linear 300ms, opacity 300ms;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 300ms, opacity 300ms;
 }
 .m-fadeIn {
-  visibility: visible;
-  opacity: 1;
-  transition: visibility 0s linear 0s, opacity 300ms;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 300ms;
 }
 
 .account-dropdown {

@@ -6007,6 +6007,8 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
       color: #fff; }
   .theme-dark .activity {
     color: #434a54; }
+  .theme-dark footer {
+    background: #3d566e; }
 
 .theme-light .activity {
   color: #434a54; }

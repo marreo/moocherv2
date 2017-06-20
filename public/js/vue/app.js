@@ -5,6 +5,7 @@ var app = new Vue({
     created() {        
         this.fetchData();        
         this.$http.get('/api/user/get').then(response => {
+            console.log('Theme: ' + response.body.profile.theme);
             this.theme = this.updateTheme(response.body.profile.theme);
         });
     },

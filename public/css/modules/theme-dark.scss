@@ -39,6 +39,10 @@ $background-light2: lighten($background,15%);
     .activity {
         color: #434a54;
     }
+
+    footer {
+        background: $background-light1;
+    }
 }
 
 

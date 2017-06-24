@@ -40,7 +40,6 @@ var app = new Vue({
             this.$http.get('/api/activities/get').then(response => {
                 this.$set(this, 'activities', response.body.activities);
                 this.$set(this, 'currUser', response.body.currUser);
-                console.log('Heej + ' + this.currUser);
             });
         },
         updateTheme: function () {

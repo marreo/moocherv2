@@ -10,7 +10,7 @@ var app = new Vue({
     data: {
         message: 'Hello Vue!',
         activities: [],
-        currUser : '',
+        currUser: '',
         searchEmail: '',
         emailSearchStatus: '',
         emailSearchStatusGroup: '',
@@ -40,6 +40,7 @@ var app = new Vue({
             this.$http.get('/api/activities/get').then(response => {
                 this.$set(this, 'activities', response.body.activities);
                 this.$set(this, 'currUser', response.body.currUser);
+                console.log('Heej + ' + this.currUser);
             });
         },
         updateTheme: function () {
@@ -113,6 +114,13 @@ var app = new Vue({
             else
                 // Twitter only, if FB then other implementation is needed.
                 return "";
-        }     
+        },
+        getOtherUsers: function (activity) {
+            var currUser = this.currUser;
+            var otherUser = activity.users.filter(function (user) {
+                return user._id != currUser;
+            });
+            return otherUser[0].profile.name;
+        }
     }
 })

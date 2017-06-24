@@ -16,7 +16,8 @@ block content
                 i.fa.fa-times
             div(class="wrapper-center")
                 img(v-bind:src="activity.symbol" class="symbol")
-                div {{ activity.desc }}
+                p {{ activity.desc }} 
+                    span with {{ getOtherUsers(activity) }}
             div(class="wrapper-inner")
                 div
                     img(v-bind:src="getProfileImage(activity)")

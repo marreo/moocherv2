@@ -24,4 +24,4 @@ block content
                     p Last Update: {{ activity.lastUpdate }}
                 div
                     input(type='hidden', name='_csrf', value=_csrf)
-                    button(@click="updatePost(activity)").btn.btn-success Change Turn
+                    button(v-if="currUser == activity.turn._id", @click="updatePost(activity)").btn.btn-success Change Turn

@@ -11,14 +11,20 @@ exports.getActivity = (req, res) => {
     return Activity.find({ users: req.user.id })
         .populate("users")
         .populate("turn")
-        .then((doc) => {
-            res.json(doc);
+        .then((activities) => {
+            res.json({activities: activities, currUser: req.user.id});
         });
 };
 
 exports.changeTurn = (req, res) => {
-    Activity.findOne({ _id: req.body._id }, function(err, act) {
-        var nextId = act.users.filter(function(id) {
+
+    Activity.findOne({ _id: req.body._id }, function (err, act) {
+
+        if(act.turn._id != req.user.id) {
+            res.status(500).send({ error: 'You can\'t change turn when it\'s not your turn!' })
+        }
+
+        var nextId = act.users.filter(function (id) {
             return id != act.turn;
         });
         act.turn = nextId;
@@ -31,7 +37,6 @@ exports.changeTurn = (req, res) => {
 };
 
 exports.createActivity = (req, res) => {
-    console.log('Hello: ' + req.body.email + ' | ' + req.body.desc);
     User.findOne({ email: req.body.email })
         .then((user) => {
             let activity = new Activity({});

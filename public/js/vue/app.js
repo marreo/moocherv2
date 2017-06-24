@@ -2,17 +2,15 @@ var app = new Vue({
     mounted: function (argument) {
         console.log("app is ready");
     },
-    created() {        
-        this.fetchData();        
-        this.$http.get('/api/user/get').then(response => {
-            console.log('Theme: ' + response.body.profile.theme);
-            this.theme = this.updateTheme(response.body.profile.theme);
-        });
+    created() {
+        this.fetchData();
+        this.updateTheme();
     },
     el: '#app',
     data: {
         message: 'Hello Vue!',
         activities: [],
+        currUser : '',
         searchEmail: '',
         emailSearchStatus: '',
         emailSearchStatusGroup: '',
@@ -40,20 +38,24 @@ var app = new Vue({
     methods: {
         fetchData() {
             this.$http.get('/api/activities/get').then(response => {
-                this.$set(this, 'activities', response.body);
+                this.$set(this, 'activities', response.body.activities);
+                this.$set(this, 'currUser', response.body.currUser);
             });
         },
-        updateTheme: function (theme) {
-            switch(theme) {
-                case 1:
-                    return 'theme-light';
-                case 2:
-                    return 'theme-dark';
-                case 3:
-                    return 'theme-color';
-                default:
-                    return 'theme-light';
-            }
+        updateTheme: function () {
+            this.$http.get('/api/user/get').then(response => {
+                var theme = response.body.profile.theme;
+                switch (theme) {
+                    case 1:
+                        this.theme = 'theme-light';
+                    case 2:
+                        this.theme = 'theme-dark';
+                    case 3:
+                        this.theme = 'theme-color';
+                    default:
+                        this.theme = 'theme-light';
+                }
+            });
         },
         updatePost: function (data) {
             data._csrf = $('meta[name="csrf-token"]').attr('content');
@@ -111,6 +113,6 @@ var app = new Vue({
             else
                 // Twitter only, if FB then other implementation is needed.
                 return "";
-        }
+        }     
     }
 })

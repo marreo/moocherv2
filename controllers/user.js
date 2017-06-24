@@ -275,11 +275,13 @@ exports.find = (req, res, next) => {
 };
 
 exports.get = (req, res, next) => {
-    res.json(req.user);
+    User.findById(req.user.id, (err, user) => {
+        res.json(user);
+    });
 };
 
-exports.changeTheme = (req, res, next) => {    
-    User.findOne({ _id: req.user.id }, function(err, user) {
+exports.changeTheme = (req, res, next) => {
+    User.findOne({ _id: req.user.id }, function (err, user) {
         user.profile.theme = req.body.theme;
         return user.save()
             .then((doc) => {

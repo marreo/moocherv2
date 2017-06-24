@@ -14,6 +14,9 @@ block content
         div(v-for="activity of activities" class="activity")
             div.activity-close
                 i.fa.fa-times
+            div.activity-edit
+                i.fa.fa-pencil
+                    span Edit
             div(class="wrapper-center")
                 img(v-bind:src="activity.symbol" class="symbol")
                 p {{ activity.desc }} 

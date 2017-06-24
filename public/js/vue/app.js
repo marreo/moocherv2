@@ -10,6 +10,7 @@ var app = new Vue({
     data: {
         message: 'Hello Vue!',
         activities: [],
+        showNewForm: 'm-fadeOut',
         currUser: '',
         searchEmail: '',
         emailSearchStatus: '',
@@ -103,6 +104,7 @@ var app = new Vue({
                     this.actDesc = '';
                     this.searchEmail = '';
                     this.showDescForm = 'm-fadeOut';
+                    this.showNewForm = 'm-fadeOut';
                     this.fetchData();
                 }.bind(this),
                 function () { });
@@ -120,6 +122,9 @@ var app = new Vue({
                 return user._id != currUser;
             });
             return otherUser[0].profile.name;
+        },
+        toggleNewForm: function () {
+            this.showNewForm = 'm-fadeIn';
         }
     }
 })

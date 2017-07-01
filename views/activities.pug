@@ -13,7 +13,7 @@ block content
                 select(id="symbolPath" name="symbolPath" placeholder="Select symbol" v-model='symbolPath' options="options")
                     option select symbol
                     option(v-for="option in options" v-bind:value="option.value" v-bind:data-img-src="option.value") {{ option.text }}
-        div(v-for="activity of activities" class="activity")
+        div(v-for="activity of activities" class="activity container")
             div.activity-close
                 i.fa.fa-times
             div.activity-edit
@@ -23,11 +23,16 @@ block content
                 img(v-bind:src="activity.symbol" class="symbol")
                 p {{ activity.desc }} 
                     span with {{ getOtherUsers(activity) }}
-            div(class="wrapper-inner")
-                div
-                    img(v-bind:src="getProfileImage(activity)")
-                    p(v-if="activity.turn.profile !== undefined") It's {{ activity.turn.profile.name }} turn
+            div(class="wrapper-inner row")
+                span.activity--turn {{isItYourTurn(activity)}}
+                div.col
+                    p {{activity.users[0].profile.name}}
+                    img(v-bind:src="getProfileImage(activity.users[0])")
+                div.col
+                    p {{activity.users[1].profile.name}}
+                    img(v-bind:src="getProfileImage(activity.users[1])")
+            div.row
+                div.col             
                     p Last Update: {{ activity.lastUpdate }}
-                div
                     input(type='hidden', name='_csrf', value=_csrf)
                     button(v-if="currUser == activity.turn._id", @click="updatePost(activity)").btn.btn-success Change Turn

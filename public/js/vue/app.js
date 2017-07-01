@@ -109,9 +109,9 @@ var app = new Vue({
                 }.bind(this),
                 function () { });
         },
-        getProfileImage: function (activity) {
-            if (activity.turn.profile !== "undefined")
-                return activity.turn.profile.picture;
+        getProfileImage: function (user) {
+            if (user.profile !== "undefined")
+                return user.profile.picture;
             else
                 // Twitter only, if FB then other implementation is needed.
                 return "";
@@ -122,6 +122,11 @@ var app = new Vue({
                 return user._id != currUser;
             });
             return otherUser[0].profile.name;
+        },
+        isItYourTurn: function (activity) {
+            // console.log(activity.turn._id);
+            // console.log(this.currUser);
+            return activity.turn._id === this.currUser ? "It's your turn!" : "It's not your turn.";
         },
         toggleNewForm: function () {
             this.showNewForm = 'm-fadeIn';

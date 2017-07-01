@@ -81,6 +81,7 @@ textarea {
 }
 
 .activity{
+    text-align: center;
     padding: 18px 10px;
     position: relative;
     height: 100px;
@@ -93,6 +94,13 @@ textarea {
     -webkit-transition: all .5s cubic-bezier(0.59, 0, 0, 1.01);
     cursor: pointer;
     overflow: hidden;
+
+    &--turn {
+        position: absolute;
+        width: 20%;
+        left: 40%;
+        font-size: 14px;
+    }
 
     &.active {
         height: 320px;
@@ -138,12 +146,11 @@ textarea {
     }
 
     .wrapper-inner{
-        position: absolute;
-        top: 100px;
         transition: top .4s, opacity .8s, filter .5s;
         -moz-transition: top .4s, opacity .8s, -moz-filter .5s;
         -webkit-transition: top .4s, opacity .8s, -webkit-filter .5s;
         -webkit-filter: blur(10px);
+        filter: blur(10px);
 
     }
 }

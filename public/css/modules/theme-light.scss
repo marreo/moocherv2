@@ -2,12 +2,20 @@
     .activity {
         color: #434a54;
 
-    &:nth-child(odd){
-        background-color: #F5F7FA;
-    }
+        &:nth-child(odd){
+            background-color: #F5F7FA;
+        
+            .activity--turn {
+                background-color: #e6e9ed;
+            }
+        }
 
-    &:nth-child(even){
-        background-color: #e6e9ed;
-    }
+        &:nth-child(even){
+            background-color: #e6e9ed;
+        
+            .activity--turn {
+                background-color: #F5F7FA;
+            }
+        }
     }
 }

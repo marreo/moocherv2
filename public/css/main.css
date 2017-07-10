@@ -6,6 +6,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -5988,11 +5989,38 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   .hidden-print {
     display: none !important; } }
 
-.theme-light .activity {
-  color: #434a54; }
+.theme-dark {
+  color: #fff;
+  background: #34495E; }
+  .theme-dark .navbar {
+    background: #3d566e; }
+    .theme-dark .navbar .dropdown a {
+      color: #fff; }
+    .theme-dark .navbar .dropdown .dropdown-item:hover {
+      background: #3d566e; }
+    .theme-dark .navbar .dropdown-menu {
+      background: #34495E; }
+  .theme-dark input {
+    background-color: #3d566e;
+    color: #fff; }
+    .theme-dark input:focus {
+      background: #4f6f8f;
+      color: #fff; }
+  .theme-dark .activity {
+    color: #434a54; }
+  .theme-dark footer {
+    background: #3d566e; }
 
 .theme-light .activity {
-  color: #fff; }
+  color: #434a54; }
+  .theme-light .activity:nth-child(odd) {
+    background-color: #F5F7FA; }
+    .theme-light .activity:nth-child(odd) .activity--turn {
+      background-color: #e6e9ed; }
+  .theme-light .activity:nth-child(even) {
+    background-color: #e6e9ed; }
+    .theme-light .activity:nth-child(even) .activity--turn {
+      background-color: #F5F7FA; }
 
 /*!
  *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome
@@ -8192,6 +8220,9 @@ html {
 body {
   margin-bottom: 75px; }
 
+.container-wrapper {
+  min-height: 100vh; }
+
 footer {
   position: absolute;
   bottom: 0;
@@ -8216,18 +8247,31 @@ textarea {
 .fa {
   margin-right: 6px; }
 
-.navbar-brand img {
-  width: 150px; }
+.navbar {
+  margin-bottom: 10px; }
+  .navbar .account--image-navbar {
+    padding-right: 15px; }
+  .navbar-brand img {
+    width: 150px; }
 
 .activity {
+  text-align: center;
   padding: 18px 10px;
   position: relative;
   height: 100px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
   transition: all 0.5s cubic-bezier(0.59, 0, 0, 1.01);
   -moz-transition: all 0.5s cubic-bezier(0.59, 0, 0, 1.01);
   -webkit-transition: all 0.5s cubic-bezier(0.59, 0, 0, 1.01);
   cursor: pointer;
   overflow: hidden; }
+  .activity--turn {
+    position: absolute;
+    width: 20%;
+    left: 40%;
+    font-size: 14px; }
   .activity.active {
     height: 320px; }
     .activity.active .wrapper-inner {
@@ -8251,19 +8295,15 @@ textarea {
     width: 48px; }
   .activity .wrapper-center {
     text-align: center; }
-    .activity .wrapper-center div {
-      font-size: 20px;
-      font-family: roboto;
-      font-weight: bold; }
   .activity .wrapper-inner {
-    position: absolute;
-    top: 100px;
     transition: top .4s, opacity .8s, filter .5s;
     -moz-transition: top .4s, opacity .8s, -moz-filter .5s;
     -webkit-transition: top .4s, opacity .8s, -webkit-filter .5s;
-    -webkit-filter: blur(10px); }
+    -webkit-filter: blur(10px);
+    filter: blur(10px); }
 
 .m-fadeOut {
+  height: 0;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 300ms, opacity 300ms; }
@@ -8276,11 +8316,24 @@ textarea {
 .account-dropdown {
   width: 100%; }
 
-.activity-close {
+.activity-edit {
+  right: 0; }
+  .activity-edit span {
+    float: left;
+    height: 32px;
+    line-height: 32px;
+    margin-right: 10px;
+    font-family: 'Roboto', sans-serif; }
+
+.fa:hover {
+  opacity: 0.7; }
+
+.activity-close, .activity-edit {
+  font-size: 16px;
   display: none;
   position: absolute; }
 
-.active .activity-close {
+.active .activity-close, .active .activity-edit {
   display: block; }
 
 ul.thumbnails.image_picker_selector {

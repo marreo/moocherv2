@@ -21,6 +21,7 @@ const multer = require('multer');
 
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
+
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
@@ -130,6 +131,7 @@ app.post('/api/activities/changeturn', passportConfig.isAuthenticated, activityC
 //Find
 app.post('/api/user/find', passportConfig.isAuthenticated, userController.find);
 app.get('/api/user/get', passportConfig.isAuthenticated, userController.get);
+app.post('/api/user/changetheme', passportConfig.isAuthenticated, userController.changeTheme);
 
 /**
  * OAuth authentication routes. (Sign in)

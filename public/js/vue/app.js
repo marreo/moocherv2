@@ -2,16 +2,16 @@ var app = new Vue({
     mounted: function (argument) {
         console.log("app is ready");
     },
-    created() {        
-        this.fetchData();        
-        this.$http.get('/api/user/get').then(response => {
-            this.theme = this.updateTheme(response.body.profile.theme);
-        });
+    created() {
+        this.fetchData();
+        this.updateTheme();
     },
     el: '#app',
     data: {
         message: 'Hello Vue!',
         activities: [],
+        showNewForm: 'm-fadeOut',
+        currUser: '',
         searchEmail: '',
         emailSearchStatus: '',
         emailSearchStatusGroup: '',
@@ -19,7 +19,7 @@ var app = new Vue({
         showDescForm: 'm-fadeOut',
         errorMessage: '',
         symbolPath: '',
-        theme: 'theme-dark',
+        theme: '',
         options: [
             { text: 'Hamburger', value: '/svg/hamburger.svg' },
             { text: 'Beer', value: '/svg/pint.svg' },
@@ -39,20 +39,24 @@ var app = new Vue({
     methods: {
         fetchData() {
             this.$http.get('/api/activities/get').then(response => {
-                this.$set(this, 'activities', response.body);
+                this.$set(this, 'activities', response.body.activities);
+                this.$set(this, 'currUser', response.body.currUser);
             });
         },
-        updateTheme: function (theme) {
-            switch(theme) {
-                case 1:
-                    return 'theme-light';
-                case 2:
-                    return 'theme-dark';
-                case 3:
-                    return 'theme-color';
-                default:
-                    return 'theme-light';
-            }
+        updateTheme: function () {
+            this.$http.get('/api/user/get').then(response => {
+                var theme = response.body.profile.theme;
+                switch (theme) {
+                    case 1:
+                        this.theme = 'theme-light';
+                    case 2:
+                        this.theme = 'theme-dark';
+                    case 3:
+                        this.theme = 'theme-color';
+                    default:
+                        this.theme = 'theme-light';
+                }
+            });
         },
         updatePost: function (data) {
             data._csrf = $('meta[name="csrf-token"]').attr('content');
@@ -100,16 +104,32 @@ var app = new Vue({
                     this.actDesc = '';
                     this.searchEmail = '';
                     this.showDescForm = 'm-fadeOut';
+                    this.showNewForm = 'm-fadeOut';
                     this.fetchData();
                 }.bind(this),
                 function () { });
         },
-        getProfileImage: function (activity) {
-            if (activity.turn.profile !== "undefined")
-                return activity.turn.profile.picture;
+        getProfileImage: function (user) {
+            if (user.profile !== "undefined")
+                return user.profile.picture;
             else
                 // Twitter only, if FB then other implementation is needed.
                 return "";
+        },
+        getOtherUsers: function (activity) {
+            var currUser = this.currUser;
+            var otherUser = activity.users.filter(function (user) {
+                return user._id != currUser;
+            });
+            return otherUser[0].profile.name;
+        },
+        isItYourTurn: function (activity) {
+            // console.log(activity.turn._id);
+            // console.log(this.currUser);
+            return activity.turn._id === this.currUser ? "It's your turn!" : "It's not your turn.";
+        },
+        toggleNewForm: function () {
+            this.showNewForm = 'm-fadeIn';
         },
         FormatDateTime: function(activity){
             //// Fix dynamic substring variables. ZZzzzz tired...

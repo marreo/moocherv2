@@ -1,27 +1,38 @@
 block content
     div
-        form(method="POST", action="/", v-on:submit.prevent="findUser")
+        div.form-group
+            button(@click="toggleNewForm()").btn.btn-primary Add new activity
+        form(method="POST", action="/", v-on:submit.prevent="findUser", v-bind:class='[showNewForm]')
             div(v-bind:class='[emailSearchStatusGroup]').form-group
                 input(type="email", placeholder="Enter an email", name="email", v-model='searchEmail', v-bind:class='[emailSearchStatus]', autocomplete="off").form-control
                 p.form-control-feedback {{errorMessage}}
-        form(method="POST", action="/", v-on:submit.prevent="newActivity")
-            div(v-bind:class='[showDescForm]').form-group
+        form(method="POST", action="/", v-on:submit.prevent="newActivity", v-bind:class='[showDescForm]')
+            div.form-group
                 input(type="text", placeholder="Enter a description", name="desc", v-model='actDesc', autocomplete="off").form-control
             div(v-bind:class='[showDescForm]').form-group
                 select(id="symbolPath" name="symbolPath" placeholder="Select symbol" v-model='symbolPath' options="options")
                     option select symbol
                     option(v-for="option in options" v-bind:value="option.value" v-bind:data-img-src="option.value") {{ option.text }}
-        div(v-for="activity of activities" class="activity")
+        div(v-for="activity of activities" class="activity container")
             div.activity-close
                 i.fa.fa-times
+            div.activity-edit
+                i.fa.fa-pencil
+                    span Edit
             div(class="wrapper-center")
                 img(v-bind:src="activity.symbol" class="symbol")
-                div {{ activity.desc }}
-            div(class="wrapper-inner")
-                div
-                    img(v-bind:src="getProfileImage(activity)")
-                    p(v-if="activity.turn.profile !== undefined") It's {{ activity.turn.profile.name }} turn
+                p {{ activity.desc }} 
+                    span with {{ getOtherUsers(activity) }}
+            div(class="wrapper-inner row")
+                span.activity--turn {{isItYourTurn(activity)}}
+                div.col
+                    p {{activity.users[0].profile.name}}
+                    img(v-bind:src="getProfileImage(activity.users[0])")
+                div.col
+                    p {{activity.users[1].profile.name}}
+                    img(v-bind:src="getProfileImage(activity.users[1])")
+            div.row
+                div.col             
                     p Last Update: {{ activity.lastUpdate }}
-                div
                     input(type='hidden', name='_csrf', value=_csrf)
-                    button(@click="updatePost(activity)").btn.btn-success Change Turn
+                    button(v-if="currUser == activity.turn._id", @click="updatePost(activity)").btn.btn-success Change Turn

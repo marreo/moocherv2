@@ -110,6 +110,10 @@ var app = new Vue({
             else
                 // Twitter only, if FB then other implementation is needed.
                 return "";
+        },
+        FormatDateTime: function(activity){
+            //// Fix dynamic substring variables. ZZzzzz tired...
+            return new Date(activity.lastUpdate).toISOString().replace(/T/, ' ').replace(/\..+/, '').substring(0,16)
         }
     }
 })

@@ -33,6 +33,6 @@ block content
                     img(v-bind:src="getProfileImage(activity.users[1])")
             div.row
                 div.col             
-                    p Last Update: {{ activity.lastUpdate }}
+                    p Last Update: {{ FormatDateTime(activity)}}
                     input(type='hidden', name='_csrf', value=_csrf)
                     button(v-if="currUser == activity.turn._id", @click="updatePost(activity)").btn.btn-success Change Turn

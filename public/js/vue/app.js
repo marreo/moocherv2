@@ -49,12 +49,16 @@ var app = new Vue({
                 switch (theme) {
                     case 1:
                         this.theme = 'theme-light';
+                        break;
                     case 2:
                         this.theme = 'theme-dark';
+                        break;
                     case 3:
                         this.theme = 'theme-color';
+                        break;
                     default:
                         this.theme = 'theme-light';
+                        break;
                 }
             });
         },
@@ -131,9 +135,9 @@ var app = new Vue({
         toggleNewForm: function () {
             this.showNewForm = 'm-fadeIn';
         },
-        FormatDateTime: function(activity){
+        FormatDateTime: function (activity) {
             //// Fix dynamic substring variables. ZZzzzz tired...
-            return new Date(activity.lastUpdate).toISOString().replace(/T/, ' ').replace(/\..+/, '').substring(0,16)
+            return new Date(activity.lastUpdate).toISOString().replace(/T/, ' ').replace(/\..+/, '').substring(0, 16)
         }
     }
 })

@@ -134,6 +134,18 @@ var app = new Vue({
         FormatDateTime: function(activity){
             //// Fix dynamic substring variables. ZZzzzz tired...
             return new Date(activity.lastUpdate).toISOString().replace(/T/, ' ').replace(/\..+/, '').substring(0,16)
+        },
+        getLogo: function () {
+            switch (this.theme) {
+                    case 'theme-light':
+                        return '/Moocher-logo.png'
+                    case 'theme-dark':
+                        return '/Moocher-logo-light.png'
+                    case 'theme-color':
+                        return '/Moocher-logo.png'
+                    default:
+                        return '/Moocher-logo.png'
+                }
         }
     }
 })

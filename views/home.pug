@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  img(src='/Moocher-logo.png')
+  img(v-bind:src="getLogo()")
   p.lead Now you can easily Mooch with your friends!
   hr  
   if !user

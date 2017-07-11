@@ -1,6 +1,6 @@
 .nav.navbar.navbar-toggleable-md
   a.navbar-brand
-    img(src="/Moocher-logo.png")
+    img(v-bind:src="getLogo()")
   div.collapse.navbar-collapse#navbarNav
     if user
       ul.navbar-nav.ml-auto      

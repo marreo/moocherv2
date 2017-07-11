@@ -1,7 +1,10 @@
 block content
     div
         div.form-group
-            button(@click="toggleNewForm()").btn.btn-primary Add new activity
+            button(@click="toggleNewForm()").btn.btn-primary 
+                i.fa.fa-plus 
+                |Add new activity
+                    
         form(method="POST", action="/", v-on:submit.prevent="findUser", v-bind:class='[showNewForm]')
             div(v-bind:class='[emailSearchStatusGroup]').form-group
                 input(type="email", placeholder="Enter an email", name="email", v-model='searchEmail', v-bind:class='[emailSearchStatus]', autocomplete="off").form-control
@@ -26,11 +29,11 @@ block content
             div(class="wrapper-inner row")
                 span.activity--turn {{isItYourTurn(activity)}}
                 div.col
-                    p {{activity.users[0].profile.name}}
                     img(v-bind:src="getProfileImage(activity.users[0])")
+                    p {{activity.users[0].profile.name}}                    
                 div.col
-                    p {{activity.users[1].profile.name}}
                     img(v-bind:src="getProfileImage(activity.users[1])")
+                    p {{activity.users[1].profile.name}}                    
             div.row
                 div.col             
                     p Last Update: {{ FormatDateTime(activity)}}
